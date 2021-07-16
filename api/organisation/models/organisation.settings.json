@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organisations",
+  "info": {
+    "name": "Organisation",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "projects": {
+      "via": "organisation",
+      "collection": "project"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "sdgs": {
+      "collection": "sdgs"
+    },
+    "field": {
+      "model": "field"
+    },
+    "location": {
+      "model": "locations"
+    },
+    "Link_1": {
+      "type": "string"
+    },
+    "Link_2": {
+      "type": "string"
+    },
+    "Link_3": {
+      "type": "string"
+    },
+    "Link_4": {
+      "type": "string"
+    },
+    "types": {
+      "collection": "types"
+    },
+    "uid": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "img": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "impactScore": {
+      "type": "float",
+      "default": 2.5,
+      "max": 5,
+      "min": 1
+    }
+  }
+}
