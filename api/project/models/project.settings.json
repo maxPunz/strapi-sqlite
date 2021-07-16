@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "name": "Project",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "organisation": {
+      "via": "projects",
+      "model": "organisation"
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "projects"
+    },
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "members": {
+      "via": "project",
+      "collection": "members"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "Link_1": {
+      "type": "string"
+    },
+    "Link_2": {
+      "type": "string"
+    },
+    "Link_3": {
+      "type": "string"
+    },
+    "Link_4": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "impactScore": {
+      "type": "float",
+      "default": 2.5,
+      "max": 5,
+      "min": 1
+    }
+  }
+}
